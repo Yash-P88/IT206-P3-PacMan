@@ -1,4 +1,4 @@
-# Pacman-Windows-CPP
+# Console-Pacman
 Pacman++ (21100130,  21100113) Our CS 100 Project using threading, windows graphics, struct pointers, recursive functions and basic AI for all 4 ghosts, along with being dynamic enough to scale to multiple levels. Completely text-based on the Windows console.
 
 FOR THREADS: 2011 C++ must be enabled. Settings > Compiler > Compiler Settings > Compiler Flags > ENABLE -std=c+11 (2nd option)
