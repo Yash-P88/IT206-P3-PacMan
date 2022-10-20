@@ -14,10 +14,9 @@ Optimal CMD Window Size: H = 35, W = 70
 
 ## Implementation details
 The project is an ASCII text-based C++ 2D Console version of Pacman, where the map of the level is stored as a 2D character array 'level' with specific dimensions. 2 threads (pac and ghost1) are used for the parallel processing of the Pacman and the Ghost, with their required variables
-We use 2 similar boolean type functions (ghost_moveAllowed() and pac_moveAllowed()) for the interactions of the Pacman and Ghost with the next character to be checked to move onto.
-In the main Pacman thread, input is taken using getch() for movement (4D - w, a, s, d) within a kbhit() if selection, to only take it when a key press is detected. 
+- We use 2 similar boolean type functions (ghost_moveAllowed() and pac_moveAllowed()) for the interactions of the Pacman and Ghost with the next character to be checked to move onto.
+- In the main Pacman thread, input is taken using getch() for movement (4D - w, a, s, d) within a kbhit() if selection, to only take it when a key press is detected. 
 Whenever the ghost collides with a wall, we call changeGhostDirection() that acts as a basic pathfinding decision maker by finding the best direction to change to, to get closer to the Pacman using horizontal and vertical distances from it. 
-resetCursor() is used before printing to reset the position of the active screen buffer cursor to origin (0,0),so that the previous map display is overwritten without the need to clear the screen every time. 
-In printbox(), putchar() is used for printing the level array within dual for loops. Also, here SetConsoleColor() is used that sets the screen buffer's current color attribute to the specified color value, we use this for color coding the array characters by using a switch.
-titleScreen() displays the initial game menu allowing the user to start or quit the game.
-Mainly, what’s left is the Pacman’s Super Mode, further interactions with the Ghost, conversion of all global to local variables, and a simple conversion to a round based system for game over and retrying.
+- resetCursor() is used before printing to reset the position of the active screen buffer cursor to origin (0,0),so that the previous map display is overwritten without the need to clear the screen every time. 
+- In printbox(), putchar() is used for printing the level array within dual for loops. Also, here SetConsoleColor() is used that sets the screen buffer's current color attribute to the specified color value, we use this for color coding the array characters by using a switch.
+- titleScreen() displays the initial game menu allowing the user to start or quit the game.
