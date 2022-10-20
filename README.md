@@ -19,5 +19,5 @@ Whenever the ghost collides with a wall, we call changeGhostDirection() that act
 - titleScreen() displays the initial game menu allowing the user to start or quit the game.
 
 ### Team
-- ![Zoraiz Qureshi](https://github.com/ZoraizQ)
-- ![Zainab Aamir](https://github.com/aamirzainab)
+- [Zoraiz Qureshi](https://github.com/ZoraizQ)
+- [Zainab Aamir](https://github.com/aamirzainab)
