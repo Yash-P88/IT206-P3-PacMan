@@ -13,6 +13,9 @@ This is a **console-based PacMan game** implemented in **C++**. The game involve
 - **Level Progression**: With each level, maze complexity and ghost AI difficulty increases.
 - **Score Tracking**: Score increments with each pellet eaten; can include bonus scores for risky moves.
 - **Game Over Mechanism**: Game ends if PacMan and any ghost collide.
+- **Threaded Implementation**: Uses parallel processing for Pacman and Ghost movements.
+- **Console-based Graphics**: ASCII text-based display with color coding.
+- **Sound Effects**: Windows multimedia library support for game sounds.
 
 ---
 
@@ -22,6 +25,23 @@ This is a **console-based PacMan game** implemented in **C++**. The game involve
 
 - **Windows OS** (Game uses Windows console-specific functions like `SetConsoleCursorPosition`)
 - **C++ Compiler** (e.g., MinGW/g++, MSVC)
+- **C++11 Support**: Must be enabled in compiler settings
+- **Windows Multimedia Library**: Required for sound effects
+
+### Compiler Settings
+
+1. **For Threads**:
+   - Enable C++11 in compiler settings:
+     - Settings > Compiler > Compiler Settings > Compiler Flags > ENABLE -std=c++11 (2nd option)
+
+2. **For Sounds**:
+   - Add Windows multimedia library linker option:
+     - Settings > Compiler > Linker settings > Other linker options: -lwinmm
+
+### Optimal CMD Window Size
+
+- Height: 35
+- Width: 70
 
 ### Steps
 
@@ -42,7 +62,7 @@ This is a **console-based PacMan game** implemented in **C++**. The game involve
    - Using g++:
 
      ```bash
-     g++ pacman.cpp -o pacman.exe
+     g++ pacman.cpp -o pacman.exe -std=c++11 -lwinmm
      ```
 
    - Using MSVC:
@@ -62,6 +82,16 @@ This is a **console-based PacMan game** implemented in **C++**. The game involve
 ## ⚙️ Basic Working
 
 The game begins in a maze filled with pellets. The player navigates PacMan using keyboard input. The goal is to eat all pellets while avoiding moving ghosts. The game updates in a loop, refreshing the screen and checking for user input, movement logic, collisions, and score changes.
+
+### Implementation Details
+
+- The game map is stored as a 2D character array 'level' with specific dimensions
+- Two threads (pac and ghost1) are used for parallel processing of Pacman and Ghost movements
+- Movement validation functions (ghost_moveAllowed() and pac_moveAllowed()) check valid moves
+- Input is taken using getch() within a kbhit() check for responsive controls
+- Ghost pathfinding uses changeGhostDirection() which calculates optimal direction based on Pacman's position
+- Console display uses resetCursor() to overwrite previous frames without clearing screen
+- printbox() renders the level array with color coding using SetConsoleColor()
 
 ### Controls
 
