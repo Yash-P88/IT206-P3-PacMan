@@ -74,7 +74,7 @@ The game begins in a maze filled with pellets. The player navigates PacMan using
 
 ---
 
-## 🧠 Data Structures & Algorithms
+## Data Structures & Algorithms
 
 ### 1. **Point Class**
 
