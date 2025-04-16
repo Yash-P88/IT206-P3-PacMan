@@ -32,11 +32,7 @@ This is a **console-based PacMan game** implemented in **C++**. The game involve
 
 1. **For Threads**:
    - Enable C++11 in compiler settings:
-     - Settings > Compiler > Compiler Settings > Compiler Flags > ENABLE -std=c++11 (2nd option)
-
-2. **For Sounds**:
-   - Add Windows multimedia library linker option:
-     - Settings > Compiler > Linker settings > Other linker options: -lwinmm
+     - Settings > Compiler > Compiler Settings > Compiler Flags > ENABLE -std=c++11
 
 ### Optimal CMD Window Size
 
@@ -278,7 +274,8 @@ ghost1.join();
 
 ## Screenshots
 
-> *(Add gameplay screenshots here by running the game and taking console captures)*
+![image](https://github.com/user-attachments/assets/d97d9251-85ad-4690-9e7f-e1cf7d02e4de)
+![image](https://github.com/user-attachments/assets/5fc2042e-3fe7-4e2a-8b5b-3277546129b0)
 
 ---
 
