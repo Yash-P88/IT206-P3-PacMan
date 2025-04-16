@@ -120,7 +120,7 @@ public:
 
 1. **Random Movement**:
    - Picks a direction (up/down/left/right) randomly.
-   - Moves if it’s not a wall.
+   - Moves if it's not a wall.
 
 2. **Chase Mode (Simple AI)**:
    - Calculates Manhattan distance to PacMan.
@@ -160,6 +160,65 @@ while (!gameOver) {
 
 ---
 
+### 5. **Threaded Implementation Details**
+
+The game uses a multi-threaded architecture for responsive gameplay:
+
+**Core Components**:
+
+```cpp
+struct LevelData {
+    // Shared game state
+    int* pY, *pX; // Pacman position
+    int* eY1, *eX1, *eY2, *eX2, *eY3, *eX3, *eY4, *eX4; // Ghost positions
+    int* score;
+    int* dotsEaten;
+    int* maxDots; // 210 (Level 1) or 251 (Level 2)
+    int* lives; // 3
+    bool* SM; // Super Mode flag
+    char* _level[21][28]; // Maze map
+};
+```
+
+**Thread Management**:
+
+```cpp
+// In main():
+thread pac(pacmanThread, LD);
+thread ghost1(ghost1Thread, LD);
+thread ghost2(ghost2Thread, LD);
+thread ghost3(ghost3Thread, LD);
+thread ghost4(ghost4Thread, LD);
+
+// ... game runs ...
+
+pac.join();
+ghost1.join();
+// ... etc
+```
+
+**Ghost Behaviors**:
+
+1. **Ghost 1 (M)**:
+   - Speed: 250ms delay
+   - Chase: Directly follows Pacman
+   - Flee: Mirrors position (15 - pacman)
+
+2. **Ghost 2 (W)**:
+   - Speed: 250ms
+   - Chase: Targets Pacman+2 tiles ahead
+   - Flee: Mirrors position
+
+3. **Ghost 3 (Y)**:
+   - Speed: 450ms (slow)
+   - Standard chase/flee logic
+
+4. **Ghost 4 (U)**:
+   - Speed: 150ms (fast)
+   - Standard chase/flee
+
+---
+
 ## How Things Are Modeled
 
 ### Game Entities
@@ -172,7 +231,7 @@ while (!gameOver) {
 ### Game Logic
 
 - **Movement**: Position updates based on keyboard input; validated against walls.
-- **Collision Detection**: Checks if PacMan’s coordinates match any ghost's—ends game on match.
+- **Collision Detection**: Checks if PacMan's coordinates match any ghost's—ends game on match.
 - **Scoring**: Score variable increments each time PacMan eats a pellet ('.').
 
 ---
