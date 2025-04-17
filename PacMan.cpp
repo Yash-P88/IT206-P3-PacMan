@@ -1,10 +1,24 @@
 #include <iostream>
-#include<conio.h>
-#include<windows.h>
+#include <conio.h> // Console Input/Output
+#include <windows.h>
 #include <thread>
+// This includes the C++ Standard Library's thread support, which allows:
+// - Creating and managing multiple threads of execution
+// - Running functions concurrently
+// - Synchronizing operations between threads
+
+/* 
+In this PACMAN game, we use it to run:
+- 1 thread for Pacman movement (pacmanThread)
+- 4 threads for ghost AI (ghost1Thread to ghost4Thread)
+- All threads share game state through the LevelData structure
+
+Note: Requires C++11 or later. Compile with -std=c++11 or higher.
+*/
 
 using namespace std ;
 
+// Forward Declarations
 struct LevelData;  
 void pacmanThread(LevelData LD);
 void ghost1Thread(LevelData LD);
