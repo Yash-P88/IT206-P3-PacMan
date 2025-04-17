@@ -75,7 +75,7 @@ This is a **console-based PacMan game** implemented in **C++**. The game involve
 
 ---
 
-## ⚙️ Basic Working
+## Basic Working
 
 The game begins in a maze filled with pellets. The player navigates PacMan using keyboard input. The goal is to eat all pellets while avoiding moving ghosts. The game updates in a loop, refreshing the screen and checking for user input, movement logic, collisions, and score changes.
 
